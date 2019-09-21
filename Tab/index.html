@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tab</title>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td><button data-url="http://vnexpress.net">VnExpress</button></td>
+      <td><button data-url="http://dantri.com.vn">Dantri</button></td>
+      <td><button data-url="http://24h.com.vn">24h</button></td>
+      <td><button data-url="http://zing.vn">Zing</button></td>
+    </tr>
+  </table>
+
+  <iframe frameborder="0" style="height: 500px; width: 100%"></iframe>
+
+  <script>
+    let buttons = document.getElementsByTagName("button");
+    let fr = document.getElementsByTagName("iframe");
+    for (let button of buttons) {
+      button.addEventListener("click", e => {
+        fr[0].src = e.target.dataset.url;
+      })
+    };
+  </script>
+</body>
+
+</html>

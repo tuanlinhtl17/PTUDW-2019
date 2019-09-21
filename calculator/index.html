@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calculator</title>
+
+  <style>
+    input {
+      font-size: 24;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <form>
+    <table border="2" width="350" height="60" cellpadding="1" cellspacing="10">
+      <tbody>
+        <tr>
+          <td colspan="3" align="middle">
+            <input type="text" id="result" value="0">
+          </td>
+          <td>&nbsp;</td>
+          <td>
+            <input type="button" id="btnClear" value="C" onclick="clearAll()">
+          </td>
+          <td>
+            <input type="button" id="btnClearEntry" value="CE" onclick="clearEntry()">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" id="" value="7" onclick="pressButton(7)">
+          </td>
+          <td>
+            <input type="button" id="" value="8" onclick="pressButton(8)">
+          </td>
+          <td>
+            <input type="button" id="" value="9" onclick="pressButton(9)">
+          </td>
+          <td></td>
+          <td>
+            <input type="button" id="" value="+/-" onclick="neg()">
+          </td>
+          <td>
+            <input type="button" id="" value="%" onclick="percent()">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" id="" value="4" onclick="pressButton(4)">
+          </td>
+          <td>
+            <input type="button" id="" value="5" onclick="pressButton(5)">
+          </td>
+          <td>
+            <input type="button" id="" value="6" onclick="pressButton(6)">
+          </td>
+          <td></td>
+          <td>
+            <input type="button" id="" value="*" onclick="setOperation('*')">
+          </td>
+          <td>
+            <input type="button" id="" value="/" onclick="setOperation('/')">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" id="" value="1" onclick="pressButton(1)">
+          </td>
+          <td>
+            <input type="button" id="" value="2" onclick="pressButton(2)">
+          </td>
+          <td>
+            <input type="button" id="" value="3" onclick="pressButton(3)">
+          </td>
+          <td></td>
+          <td>
+            <input type="button" id="" value="+" onclick="setOperation('+')">
+          </td>
+          <td>
+            <input type="button" id="" value="-" onclick="setOperation('-')">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" id="" value="0" onclick="pressButton(0)">
+          </td>
+          <td>
+            <input type="button" id="" value="." onclick="decimal()">
+          </td>
+          <td></td>
+          <td>
+            <input type="button" id="" value="=" onclick="getResult()">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
