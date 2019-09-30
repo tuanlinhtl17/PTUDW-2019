@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Form</title>
+
+  <style>
+    body {
+      font-size: 16px;
+    }
+
+    label {
+      display: inline-block;
+      width: 150px;
+      margin-top: 5px;
+    }
+
+    /* Custom text input */
+    input,
+    textarea {
+      display: inline-block;
+      margin-top: 10px;
+      border: black solid 1px;
+      border-radius: 5px;
+    }
+
+    input:not(.special),
+    textarea {
+      width: 300px;
+      height: 30px;
+    }
+
+    input:required {
+      background-color: aqua;
+    }
+
+    /* Custom checkbox and radio button */
+    .radio,
+    .checkbox {
+      position: relative;
+    }
+
+    .container {
+      left: 162px;
+      display: inline-block;
+      position: absolute;
+      width: 1000px;
+    }
+
+    .custom_select {
+      position: relative;
+      padding-left: 20px;
+      width: 80px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .checkbox_btn,
+    .radio_btn {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+      top: 0;
+      left: 0;
+    }
+
+    /* Checkbox */
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 15px;
+      width: 15px;
+      background-color: #eee;
+    }
+
+    .container input:checked~.checkmark {
+      background-color: #2196F3;
+    }
+
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    .container input[type=checkbox]:checked~.checkmark:after {
+      display: block;
+    }
+
+    .container .checkmark:after {
+      left: 5px;
+      top: -7px;
+      width: 5px;
+      height: 15px;
+      border: solid black;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    /* Radio button */
+    .radio_check {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 15px;
+      width: 15px;
+      background-color: #eee;
+      border-radius: 50%;
+    }
+
+    .container input[type=radio]:checked~.radio_check {
+      background-color: #2196F3;
+    }
+
+    .radio_check:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    .container input:checked~.radio_check:after {
+      display: block;
+    }
+
+    .container .radio_check:after {
+      top: 5.5px;
+      left: 5px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: white;
+    }
+
+    /* Custom submit button */
+    #submit {
+      margin-top: 20px;
+      padding-left: 150px;
+    }
+
+    #submit button {
+      background-color: cornflowerblue;
+      border-radius: 10px;
+      padding: 8px 5px;
+      margin-right: 10px;
+    }
+
+    /* Error message */
+    .errorMes {
+      color: red;
+      display: inline;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="myForm">
+    <div>
+      <label for="hoTen">Họ Tên:</label>
+      <input class="input" name="hoTen" type="text" required autofocus>
+      <br>
+    </div>
+
+    <div>
+      <label for="diaChi">Địa chỉ:</label>
+      <input class="input" name="diaChi" type="text">
+      <br>
+    </div>
+
+    <div id="radio">Giới tính:
+      <div class="container">
+        <label class="custom_select">Nam
+          <input class="special radio_btn" name="gioiTinh" type="radio" value="nam" id="nam">
+          <span class="radio_check"></span>
+        </label>
+
+        <label class="custom_select">Nữ
+          <input class="special radio_btn" name="gioiTinh" type="radio" value="nu">
+          <span class="radio_check"></span>
+        </label>
+      </div>
+      <br>
+    </div>
+
+    <div>
+      <label for="ngaySinh">Ngày sinh:</label>
+      <input class="input" name="ngaySinh" type="date" placeholder="nn/tt/nnn" required>
+      <br>
+    </div>
+
+    <div>
+      <label for="email">E-mail:</label>
+      <input class="input" name="email" type="email" required>
+      <br>
+    </div>
+
+    <div>
+      <label for="dienThoai">Điện thoại:</label>
+      <input class="input" name="dienThoai" type="number">
+      <br>
+    </div>
+
+    <div id="checkbox">Khóa đăng ký:
+      <div class="container">
+        <label class="custom_select">Tiếng anh
+          <input class="special checkbox_btn" name="khoaDangKy" type="checkbox" value="tieng_anh">
+          <span class="checkmark"></span>
+        </label>
+
+        <label class="custom_select">Quản trị
+          <input class="special checkbox_btn" name="khoaDangKy" type="checkbox" value="quan_tri">
+          <span class="checkmark"></span>
+        </label>
+
+        <label class="custom_select">CNTT
+          <input class="special checkbox_btn" name="khoaDangKy" type="checkbox" value="CNTT">
+          <span class="checkmark"></span>
+        </label>
+        <br>
+      </div>
+    </div>
+
+    <div>
+      <label for="tenSuDung">Tên sử dụng:
+      </label>
+      <input class="input" name="tenSuDung" type="text" required>
+      <br>
+    </div>
+
+    <div>
+      <label for="matKhau">Mật khẩu:</label>
+      <input class="input" name="matKhau" type="password" required>
+      <br>
+    </div>
+
+    <div>
+      <label for="goLaiMatKhau">Gõ lại mật khẩu:</label>
+      <input class="input" name="goLaiMatKhau" type="password" required>
+      <br>
+    </div>
+
+    <div>
+      <label for="ghiChu">Ghi chú:</label>
+      <textarea class="input" name="ghiChu" cols="30" rows="3"></textarea>
+    </div>
+
+    <div id="submit">
+      <button id="btnSubmit">
+        Chấp nhận
+      </button>
+      <button id="btnRefresh">
+        Bỏ qua
+      </button>
+    </div>
+
+  </form>
+
+  <script>
+    let inputs = document.getElementsByClassName("input");
+    for (let i = 0; i < inputs.length - 1; i++) {
+      inputs[i].addEventListener("keydown", e => {
+        if (e.which === 13) {
+          e.preventDefault();
+          inputs[i + 1].focus();
+        }
+      })
+    }
+
+    let validations = document.getElementsByTagName("input");
+    let btnSubmit = document.getElementById("btnSubmit");
+    let btnRefresh = document.getElementById("btnRefresh");
+
+    btnSubmit.addEventListener("click", e => {
+      e.preventDefault();
+      for (validation of validations) {
+        if (!validation.checkValidity()) {
+          var errorMes = document.createElement("p");
+          errorMes.innerHTML = validation.validationMessage;
+          errorMes.className = "errorMes";
+          let parentNode = validation.parentNode;
+          let childNodes = parentNode.childNodes;
+          parentNode.insertBefore(errorMes, childNodes[childNodes.length - 2]);
+        }
+      }
+    });
+
+    btnRefresh.addEventListener("click", e => {
+      e.preventDefault();
+      document.getElementById("myForm").reset();
+    })
+  </script>
+</body>
+
+</html>
