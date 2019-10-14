@@ -266,6 +266,22 @@
   </form>
 
   <script>
+    let hoTenInput = document.getElementsByName("hoTen")[0];
+    hoTenInput.addEventListener("focusout", e => {
+      let value = e.target.value.split(" ")
+      let newName = "";
+      for (let i = 0; i < value.length; i++) {
+        if (value[i] !== "") {
+          let newValue = value[i].charAt(0).toUpperCase() + value[i].slice(1).toLowerCase()
+          newName = newName.concat(newValue)
+          if (i !== value.length - 1) {
+            newName = newName.concat(" ")
+          }
+        }
+      }
+      e.target.value = newName
+    })
+
     let inputs = document.getElementsByClassName("input");
     for (let i = 0; i < inputs.length - 1; i++) {
       inputs[i].addEventListener("keydown", e => {

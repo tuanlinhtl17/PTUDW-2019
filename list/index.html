@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>List</title>
+
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      border: solid 1px #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    table tr:not(#header):hover {
+      background-color: greenyellow;
+    }
+
+    #header {
+      background-color: aqua;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    table tr:nth-child(odd) {
+      background-color: bisque;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <tr id="header">
+      <th><input type="checkbox" id="checkAll"></th>
+      <th>Họ tên</th>
+      <th>Ngày sinh</th>
+      <th>Giới tính</th>
+    </tr>
+    <tr id="1">
+      <td><input type="checkbox" class="check"></td>
+      <td>Hoàng Thị Thảo</td>
+      <td>23/6/1990</td>
+      <td>Nữ</td>
+    </tr>
+    <tr id="2">
+      <td><input type="checkbox" class="check"></td>
+      <td>Ngô Mạnh Quân</td>
+      <td>14/4/1992</td>
+      <td>Nam</td>
+    </tr>
+    <tr id="3">
+      <td><input type="checkbox" class="check"></td>
+      <td>Nguyễn Thanh Tùng</td>
+      <td>27/9/1991</td>
+      <td>Nam</td>
+    </tr>
+    <tr id="4">
+      <td><input type="checkbox" class="check"></td>
+      <td>Hoàng Thị Ngân</td>
+      <td>12/12/1992</td>
+      <td>Nữ</td>
+    </tr>
+  </table>
+
+  <script>
+    let checkBoxItems = document.getElementsByClassName("check")
+    let trList = document.getElementsByTagName("tr")
+    let tdList = document.getElementsByTagName("td")
+    let checkAll = document.getElementById("checkAll")
+
+    for (checkbox of checkBoxItems) {
+      checkbox.addEventListener("click", e => {
+        changBackground(e.target)
+        checkAll.checked = isCheckedAll()
+      })
+    };
+
+    for (td of tdList) {
+      td.addEventListener("click", e => {
+        let parent = e.target.parentNode
+        if (e.target.className !== "check") {
+          parent.children[0].children[0].click()
+        }
+      })
+    }
+
+    checkAll.addEventListener("click", e => {
+      for (checkbox of checkBoxItems) {
+        checkbox.checked = checkAll.checked
+        changBackground(checkbox)
+      }
+    })
+
+    const isCheckedAll = () => {
+      for (checkbox of checkBoxItems) {
+        if (!checkbox.checked) {
+          return false
+        }
+      }
+      return true
+    }
+
+    const changBackground = target => {
+      let tr = target.parentNode.parentNode
+      if (target.checked) {
+        tr.style.background = "yellow"
+      } else {
+        tr.style.background = Number(tr.id) % 2 === 0 ? "bisque" : "#dddddd"
+      }
+    }
+  </script>
+</body>
+
+</html>
